@@ -5,6 +5,8 @@ using namespace std;
 
 // Lists are doubly linked lists, whereas vectors are dynamic arrays
 
+// Lists have double pointers but no RANDOM ACCESS, vectors have random access but no double pointers
+
 void explainList(){
     list<int> ls;
     ls.push_back(2);
