@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void explainUnorderedMap(){
+void explainAlgs(){
 
 }
 
 int main(){
-    explainUnorderedMap();
+    explainAlgs();
     return 0;
 }
