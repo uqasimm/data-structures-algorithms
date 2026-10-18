@@ -54,6 +54,24 @@ void printLL(Node* head){
     
 }
 
+Node* deleteTail(Node* head){
+    if (head == nullptr || head->next == nullptr)
+    {
+        free(head);
+        return nullptr;
+    }
+
+    Node* temp = head;
+    while (temp->next->next != nullptr)
+    {
+        temp = temp->next;
+    }
+    free(temp->next);
+    temp->next = nullptr;
+    return head;
+    
+}
+
 
 int main(){
     vector<int> arr = {2, 5, 7, 10};
@@ -76,7 +94,9 @@ int main(){
     //     newValue = newValue->next;
     // }
 
-    head = deleteHead(head);
+    // head = deleteHead(head);
+
+    head = deleteTail(head);
     printLL(head);
     
     return 0;
