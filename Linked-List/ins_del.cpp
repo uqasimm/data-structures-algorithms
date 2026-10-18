@@ -108,6 +108,35 @@ Node *deleteK_th(Node *head, int k)
     return head;
 }
 
+Node *deleteOnValue(Node *head, int value)
+{
+    if (head == nullptr)
+    {
+        return nullptr;
+    }
+    if (head->data == value)
+    {
+        Node *temp = head;
+        head = head->next;
+        free(temp);
+        return head;
+    }
+    Node *temp = head;
+    Node *prev = nullptr;
+    while (temp != nullptr)
+    {
+        if (temp->data == value)
+        {
+            prev->next = prev->next->next;
+            free(temp);
+            break;
+        }
+        prev = temp;
+        temp = temp->next;
+    }
+    return head;
+}
+
 int main()
 {
     vector<int> arr = {2, 5, 7, 10};
@@ -134,7 +163,9 @@ int main()
 
     // head = deleteTail(head);
 
-    head = deleteK_th(head, 6);
+    // head = deleteK_th(head, 6);
+
+    head = deleteOnValue(head, 10);
     printLL(head);
 
     return 0;
