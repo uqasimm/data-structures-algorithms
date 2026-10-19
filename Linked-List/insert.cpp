@@ -73,7 +73,7 @@ Node *insertK_th(Node *head, int value, int k)
     {
         return head;
     }
-    
+
     if (head == nullptr)
     {
         if (k == 1)
@@ -107,10 +107,37 @@ Node *insertK_th(Node *head, int value, int k)
             break;
         }
         temp = temp->next;
-        
+
     }
     return head;
+}
+
+Node *insertBeforeValue(Node *head, int elementToInsert, int givenValue)
+{
+    if (head == nullptr)
+    {
+        return nullptr;
+    }
+
+    if (head->data == givenValue) // first position or before head
+    {
+        return new Node(elementToInsert, head);
+    }
+
+    Node *temp = head;
+    while (temp->next != nullptr)
+    {
+        if (temp->next->data == givenValue)
+        {
+            Node *newNode = new Node(elementToInsert);
+            newNode->next = temp->next;
+            temp->next = newNode;
+            break;
+        }
+        temp = temp->next;
+    }
     
+    return head;
 }
 
 int main()
@@ -122,7 +149,9 @@ int main()
 
     // head = insertTail(head, 20);
 
-    head = insertK_th(head, 100, 6);
+    // head = insertK_th(head, 100, 6);
+
+    head = insertBeforeValue(head, 50, 7);
 
     printLL(head);
 
