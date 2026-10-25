@@ -147,7 +147,7 @@ int main()
 
     // head = insertHead(head, 1);
 
-    // head = insertTail(head, 20);
+    head = insertTail(head, 20);
 
     // head = insertK_th(head, 100, 6);
 
