@@ -70,7 +70,7 @@ Node *insertTail(Node *head, int value) // insertion is before the tail
 
     if (head->next == nullptr)
     {
-        Node* newNode = new Node(value, head, nullptr);
+        Node *newNode = new Node(value, head, nullptr);
         head->prev = newNode;
         return newNode;
     }
@@ -88,6 +88,47 @@ Node *insertTail(Node *head, int value) // insertion is before the tail
     return head;
 }
 
+Node *insertK_th(Node *head, int value, int k)
+{
+    if (head == nullptr || k <= 0)
+    {
+        return nullptr;
+    }
+
+    if (k == 1)
+    {
+        Node* newNode = new Node(value, head, nullptr);
+        head->prev = newNode;
+
+        return newNode;
+    }
+    
+    Node* temp = head;   
+    int count = 0;
+    while (temp != nullptr)
+    {
+        count++;
+        if (count == k)
+        {
+            break;
+        }
+        temp = temp->next;
+    }
+
+    if (temp == nullptr)
+    {
+        return head;
+    }
+    
+    Node* back = temp->prev;
+    
+    Node* newNode = new Node(value, temp, back);
+    temp->prev = newNode;
+    back->next = newNode;
+
+    return head;
+}
+
 int main()
 {
     vector<int> arr = {10, 5, 2, 6, 7};
@@ -95,7 +136,9 @@ int main()
 
     // head = insertHead(head, 7);
 
-    head = insertTail(head, 2);
+    // head = insertTail(head, 2);
+
+    head = insertK_th(head, 3, 1);
 
     printDLL(head);
 
