@@ -152,6 +152,35 @@ Node *deleteK_th(Node *head, int k)
     return head;
 }
 
+void deleteNode(Node *temp) // not for head node
+{
+    if (temp == nullptr)
+    {
+        return;
+    }
+    
+    Node* back = temp->prev;
+    Node* front = temp->next;
+
+    if (back == nullptr && front == nullptr) // this is when there is only one node
+    {
+        delete temp;
+        return;
+    }
+    
+
+    if (front == nullptr)
+    {
+        back->next = nullptr;
+        delete temp;
+        return;
+    }
+
+    back->next = front;
+    front->prev = back;
+    delete temp;
+}
+
 int main()
 {
     vector<int> arr = {10, 2, 6, 5, 3};
@@ -161,8 +190,9 @@ int main()
 
     // head = deleteTail(head);
 
-    head = deleteK_th(head, 3);
+    // head = deleteK_th(head, 3);
 
+    deleteNode(head->next->next);
     printDLL(head);
 
     return 0;
