@@ -97,13 +97,13 @@ Node *insertK_th(Node *head, int value, int k)
 
     if (k == 1)
     {
-        Node* newNode = new Node(value, head, nullptr);
+        Node *newNode = new Node(value, head, nullptr);
         head->prev = newNode;
 
         return newNode;
     }
-    
-    Node* temp = head;   
+
+    Node *temp = head;
     int count = 0;
     while (temp != nullptr)
     {
@@ -119,14 +119,27 @@ Node *insertK_th(Node *head, int value, int k)
     {
         return head;
     }
-    
-    Node* back = temp->prev;
-    
-    Node* newNode = new Node(value, temp, back);
+
+    Node *back = temp->prev;
+
+    Node *newNode = new Node(value, temp, back);
     temp->prev = newNode;
     back->next = newNode;
 
     return head;
+}
+
+void insertNode(Node *temp, int value)
+{
+    if (temp == nullptr)
+    {
+        return;
+    }
+
+    Node *back = temp->prev;
+    Node* newNode = new Node(value, temp, back);
+    back->next = newNode;
+    temp->prev = newNode;
 }
 
 int main()
@@ -138,7 +151,9 @@ int main()
 
     // head = insertTail(head, 2);
 
-    head = insertK_th(head, 3, 1);
+    // head = insertK_th(head, 3, 1);
+
+    insertNode(head->next, 100);
 
     printDLL(head);
 
