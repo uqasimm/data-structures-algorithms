@@ -72,6 +72,7 @@ int main()
 {
     vector<int> arr = {10, 4, 2, 6, 7};
     Node *head = convertArrToDLL(arr);
+    head = reverseDLL(head);
 
     printDLL(head);
 
